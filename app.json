@@ -24,6 +24,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "A Todo app built with Dark Mode Support for the Building Mobile Apps with React Native course.",
+    "githubUrl": "https://github.com/DaniAkash/RN-ToDoApp"
   }
 }
