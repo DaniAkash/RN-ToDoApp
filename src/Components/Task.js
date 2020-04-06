@@ -23,7 +23,15 @@ const Task = ({ text, taskIndex, toggleTask, status }) => {
         value={status}
         onValueChange={onClickSwitch}
       />
-      <Text style={[styles.text, { color: textColor }]}>{text}</Text>
+      <Text
+        style={[
+          styles.text,
+          { color: textColor },
+          status ? styles.textComplete : null,
+        ]}
+      >
+        {text}
+      </Text>
     </View>
   );
 };
@@ -38,6 +46,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     marginLeft: 8,
+  },
+  textComplete: {
+    textDecorationLine: "line-through",
   },
 });
 

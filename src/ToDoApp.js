@@ -39,7 +39,16 @@ const ToDoApp = () => {
     );
   };
 
-  const addTask = () => null;
+  const addTask = (newTask) => {
+    setNewTaskText("");
+    setTasks([
+      ...tasks,
+      {
+        text: newTask,
+        isComplete: false,
+      },
+    ]);
+  };
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor }]}>

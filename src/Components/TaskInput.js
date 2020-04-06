@@ -5,6 +5,8 @@ import useColors from "../hooks/useColors";
 const TaskInput = ({ newTaskText, updateText, addTask }) => {
   const { textColor } = useColors();
 
+  const onClickAdd = () => addTask(newTaskText);
+
   return (
     <View style={styles.taskInputContainer}>
       <TextInput
@@ -13,7 +15,7 @@ const TaskInput = ({ newTaskText, updateText, addTask }) => {
         onChangeText={updateText}
         style={[styles.taskInputField, { color: textColor }]}
       />
-      <Button title={"Add"} onPress={addTask} />
+      <Button title={"Add"} onPress={onClickAdd} />
     </View>
   );
 };
