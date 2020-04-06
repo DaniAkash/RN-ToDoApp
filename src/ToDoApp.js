@@ -3,6 +3,7 @@ import { StyleSheet, SafeAreaView, ScrollView, Text } from "react-native";
 import useColors from "./hooks/useColors";
 import Header from "./Components/Header";
 import TaskInput from "./Components/TaskInput";
+import Task from "./Components/Task";
 
 const ToDoApp = () => {
   const { backgroundColor, contentBackgroundColor } = useColors();
@@ -10,19 +11,33 @@ const ToDoApp = () => {
   const [tasks, setTasks] = useState([
     {
       text: "Gardening",
-      isComplete: false
+      isComplete: false,
     },
     {
       text: "Grocery",
-      isComplete: false
+      isComplete: false,
     },
     {
       text: "Car Wash",
-      isComplete: false
-    }
+      isComplete: false,
+    },
   ]);
 
-  const updateText = updatedText => setNewTaskText(updatedText);
+  const updateText = (updatedText) => setNewTaskText(updatedText);
+
+  const toggleTask = (taskIndex) => {
+    setTasks(
+      tasks.map((task, index) => {
+        if (index === taskIndex) {
+          return {
+            ...task,
+            isComplete: !task.isComplete,
+          };
+        }
+        return task;
+      })
+    );
+  };
 
   const addTask = () => null;
 
@@ -37,7 +52,15 @@ const ToDoApp = () => {
           updateText={updateText}
         />
         {tasks.map((task, taskIndex) => {
-          return <Text key={taskIndex}>{task.text}</Text>;
+          return (
+            <Task
+              key={taskIndex}
+              text={task.text}
+              status={task.isComplete}
+              toggleTask={toggleTask}
+              taskIndex={taskIndex}
+            />
+          );
         })}
       </ScrollView>
     </SafeAreaView>
@@ -46,8 +69,8 @@ const ToDoApp = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default ToDoApp;

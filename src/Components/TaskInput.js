@@ -22,12 +22,13 @@ const styles = StyleSheet.create({
   taskInputContainer: {
     flex: 1,
     flexDirection: "row",
-    paddingHorizontal: 24
+    paddingHorizontal: 24,
+    marginVertical: 8,
   },
   taskInputField: {
     flex: 1,
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
 });
 
 export default TaskInput;
